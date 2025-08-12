@@ -1,0 +1,70 @@
+/* HayDay Progress Tracker - basic styles */
+:root{
+  --hd-green:#7AC74F;
+  --hd-yellow:#F4C542;
+  --ink:#243b2e;
+  --bg:#f8faf7;
+  --muted:#e9efe6;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body.hd-body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+  color:var(--ink);
+  background:var(--bg);
+}
+
+.hd-header{
+  position:sticky; top:0; z-index:10;
+  background:white; border-bottom:1px solid var(--muted);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px;
+}
+.brand{display:flex; align-items:center; gap:10px}
+.brand .logo{
+  width:32px; height:32px; border-radius:50%;
+  background:linear-gradient(135deg,var(--hd-green),var(--hd-yellow));
+  display:inline-grid; place-items:center; color:white; font-weight:800;
+}
+
+nav a{color:var(--ink); text-decoration:none; margin:0 8px; padding:6px 10px; border-radius:8px}
+nav a.active, nav a:hover{background:var(--muted)}
+
+.container{max-width:1000px; margin:24px auto; padding:0 16px}
+.card{background:white; border:1px solid var(--muted); border-radius:16px; padding:16px; margin-bottom:16px; box-shadow:0 1px 0 rgba(0,0,0,.03)}
+
+.hd-table{width:100%; border-collapse:separate; border-spacing:0}
+.hd-table th, .hd-table td{border-bottom:1px solid var(--muted); padding:10px}
+.hd-table thead th{background:var(--bg); position:sticky; top:54px}
+.hd-table tbody tr:hover{background:#fbfdf9}
+.align-right{text-align:right}
+
+.input{width:100%; padding:8px 10px; border:1px solid var(--muted); border-radius:10px; background:#fcfffa}
+.input:focus{outline:none; border-color:var(--hd-green); box-shadow:0 0 0 3px rgba(122,199,79,.2)}
+.input.frac{text-align:center}
+
+.toolbar{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:12px}
+.btn{background:var(--hd-green); color:white; border:none; border-radius:999px; padding:8px 14px; cursor:pointer; font-weight:600}
+.btn:hover{filter:brightness(.95)}
+.btn-secondary{background:var(--ink)}
+.btn-outline{background:white; color:var(--ink); border:1px solid var(--muted)}
+
+.actions-cell{display:flex; align-items:center; gap:8px; justify-content:center}
+.icon-btn{border:none; background:#fee; color:#a00; border-radius:8px; padding:6px 8px; cursor:pointer}
+.icon-btn:hover{background:#fcc}
+
+.progress-wrapper{margin-top:16px}
+.progress{height:14px; background:#ecf2e9; border-radius:999px; overflow:hidden; border:1px solid var(--muted)}
+.progress-bar{height:100%; background:linear-gradient(90deg,var(--hd-green),var(--hd-yellow)); transition:width .25s ease}
+.progress-label{display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; font-weight:600}
+.progress-note{margin-top:6px; font-size:.9rem; opacity:.8}
+
+.hd-footer{padding:20px; text-align:center; color:#567;}
+
+/* Responsive */
+@media (max-width:700px){
+  nav a{margin:0 4px}
+  .hd-table td:nth-child(2), .hd-table td:nth-child(3), .hd-table td:nth-child(4){min-width:94px}
+}
