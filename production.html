@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Production Buildings • HayDay Progress Tracker</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
+</head>
+<body class="hd-body">
+  <header class="hd-header">
+    <div class="brand">
+      <span class="logo">H</span>
+      <h1>Production Buildings</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="production.html" class="active">Production Buildings</a>
+      <a href="animals.html">Animals</a>
+      <a href="crops.html">Crops</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="toolbar">
+        <div class="left">
+          <button id="add-row" class="btn">Add Row</button>
+        </div>
+        <div class="right">
+          <button id="reset" class="btn btn-secondary">Reset to Sample</button>
+          <button id="export" class="btn btn-outline">Export JSON</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="hd-table" id="prod-table" aria-label="Production Buildings Progress">
+          <thead>
+            <tr>
+              <th style="width:32%">Building</th>
+              <th>Level 1</th>
+              <th>Level 2</th>
+              <th>Level 3</th>
+              <th style="width:64px"></th>
+            </tr>
+          </thead>
+          <tbody id="prod-body">
+          </tbody>
+          <tfoot>
+            <tr>
+              <td class="align-right"><strong>Section Progress</strong></td>
+              <td colspan="4">
+                <div class="progress">
+                  <div id="section-bar" class="progress-bar" style="width:0%"></div>
+                </div>
+                <div class="progress-note"><span id="section-label">—</span></div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="hd-footer">
+    <small>Saved to your browser automatically • v0.1</small>
+  </footer>
+
+  <template id="row-template">
+    <tr>
+      <td><input type="text" class="input text" placeholder="Building name" /></td>
+      <td><input type="text" class="input frac" placeholder="e.g. 1 or 3/6" /></td>
+      <td><input type="text" class="input frac" placeholder="e.g. 1 or 4/6" /></td>
+      <td><input type="text" class="input frac" placeholder="e.g. 1 or 6/6" /></td>
+      <td class="actions-cell">
+        <button class="icon-btn remove" title="Delete">✕</button>
+      </td>
+    </tr>
+  </template>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tbody = document.getElementById("prod-body");
+      const t = document.getElementById("row-template");
+      const sectionBar = document.getElementById("section-bar");
+      const sectionLabel = document.getElementById("section-label");
+
+      function addRow(data) {
+        const node = t.content.cloneNode(true);
+        const tr = node.querySelector("tr");
+        const [name, l1, l2, l3] = tr.querySelectorAll("input");
+        if (data) {
+          name.value = data.name || "";
+          l1.value = data.l1 ?? "";
+          l2.value = data.l2 ?? "";
+          l3.value = data.l3 ?? "";
+        }
+        tr.querySelector(".remove").addEventListener("click", () => {
+          tr.remove();
+          save();
+          renderProgress();
+        });
+        [name, l1, l2, l3].forEach(inp => {
+          inp.addEventListener("input", () => {
+            save();
+            renderProgress();
+          });
+        });
+        tbody.appendChild(node);
+      }
+
+      function collectRows() {
+        const rows = [];
+        tbody.querySelectorAll("tr").forEach(tr => {
+          const [name, l1, l2, l3] = tr.querySelectorAll("input");
+          rows.push({ name: name.value.trim(), l1: l1.value.trim(), l2: l2.value.trim(), l3: l3.value.trim() });
+        });
+        return rows;
+      }
+
+      function save() {
+        const state = HD.loadAll();
+        state.production = { rows: collectRows(), updatedAt: new Date().toISOString() };
+        HD.saveAll(state);
+      }
+
+      function renderProgress() {
+        const rows = collectRows();
+        const pct = HD.calcSectionProgress(rows);
+        sectionLabel.textContent = HD.formatPct(pct);
+        sectionBar.style.width = (pct*100).toFixed(2) + "%";
+      }
+
+      document.getElementById("add-row").addEventListener("click", () => addRow());
+      document.getElementById("reset").addEventListener("click", () => {
+        tbody.innerHTML = "";
+        HD.sampleProduction().forEach(addRow);
+        save();
+        renderProgress();
+      });
+      document.getElementById("export").addEventListener("click", () => {
+        const data = { production: { rows: collectRows() } };
+        const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "hayday-production.json";
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // INIT
+      const state = HD.loadAll();
+      const rows = state.production?.rows?.length ? state.production.rows : HD.sampleProduction();
+      rows.forEach(addRow);
+      renderProgress();
+    });
+  </script>
+</body>
+</html>

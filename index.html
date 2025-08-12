@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HayDay Progress Tracker</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
+</head>
+<body class="hd-body">
+  <header class="hd-header">
+    <div class="brand">
+      <span class="logo">H</span>
+      <h1>HayDay Progress Tracker</h1>
+    </div>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="production.html">Production Buildings</a>
+      <!-- Future pages -->
+      <a href="animals.html">Animals</a>
+      <a href="crops.html">Crops</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Overview</h2>
+      <p>This dashboard shows your overall progress. Use the pages in the top menu to add or edit data. Everything is saved in your browser (localStorage) — no spreadsheets required.</p>
+      <div id="overview" class="overview">
+        <div class="kpi">
+          <div class="kpi-label">Production Buildings</div>
+          <div class="kpi-value" id="kpi-production">—</div>
+        </div>
+        <!-- Add more KPIs later (Animals, Crops, etc.) -->
+      </div>
+      <div class="progress-wrapper">
+        <div class="progress-label"><span>Total</span><span id="total-label">—</span></div>
+        <div class="progress">
+          <div id="total-bar" class="progress-bar" style="width:0%"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Quick Actions</h3>
+      <div class="actions">
+        <a class="btn" href="production.html">Update Production Buildings</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="hd-footer">
+    <small>Client-side only • Data saved locally in your browser • v0.1</small>
+  </footer>
+
+  <script>
+    // Render KPIs from storage
+    document.addEventListener("DOMContentLoaded", () => {
+      const state = HD.loadAll();
+      const prod = HD.calcSectionProgress(state.production?.rows || []);
+      const total = prod; // for MVP only production counts toward total
+      document.getElementById("kpi-production").textContent = HD.formatPct(prod);
+      document.getElementById("total-label").textContent = HD.formatPct(total);
+      document.getElementById("total-bar").style.width = (total*100).toFixed(2) + "%";
+    });
+  </script>
+</body>
+</html>
