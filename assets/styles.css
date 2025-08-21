@@ -68,3 +68,10 @@ nav a.active, nav a:hover{background:var(--muted)}
   nav a{margin:0 4px}
   .hd-table td:nth-child(2), .hd-table td:nth-child(3), .hd-table td:nth-child(4){min-width:94px}
 }
+
+.center { text-align: center; }
+.input[readonly] { background:#f6f8f5; color:#556; }
+.chk-wrap { display:inline-flex; align-items:center; gap:6px; }
+.chk-wrap input[type="checkbox"] { transform: scale(1.2); }
+
+

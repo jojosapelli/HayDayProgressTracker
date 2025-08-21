@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Production Buildings • HayDay Progress Tracker</title>
   <link rel="stylesheet" href="assets/styles.css" />
-  <script defer src="assets/app.js"></script>
+  <style>
+    .name-cell{font-weight:600}
+    .center{text-align:center}
+    .chk-wrap{display:inline-flex; align-items:center; gap:6px}
+    .chk-wrap input[type="checkbox"]{transform:scale(1.2)}
+  </style>
 </head>
 <body class="hd-body">
   <header class="hd-header">
@@ -23,29 +28,77 @@
 
   <main class="container">
     <section class="card">
-      <div class="toolbar">
-        <div class="left">
-          <button id="add-row" class="btn">Add Row</button>
-        </div>
-        <div class="right">
-          <button id="reset" class="btn btn-secondary">Reset to Sample</button>
-          <button id="export" class="btn btn-outline">Export JSON</button>
-        </div>
-      </div>
-
       <div class="table-wrap">
         <table class="hd-table" id="prod-table" aria-label="Production Buildings Progress">
           <thead>
             <tr>
-              <th style="width:32%">Building</th>
-              <th>Level 1</th>
+              <th style="width:40%">Building</th>
+              <th>Unlocked</th>
               <th>Level 2</th>
               <th>Level 3</th>
-              <th style="width:64px"></th>
+              <th>Level 4</th>
             </tr>
           </thead>
+
           <tbody id="prod-body">
+            <!-- 55 filas estáticas -->
+            <tr><td class="name-cell">Bakery</td>               <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Feed mill</td>            <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Feed mill</td>            <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Dairy</td>                <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Sugar mill</td>           <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Sugar mill</td>           <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Popcorn pot</td>          <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">BBQ grill</td>            <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Pie oven</td>             <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Loom</td>                 <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Sewing machine</td>       <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Cake oven</td>            <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Smelter</td>              <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Smelter</td>              <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Smelter</td>              <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Smelter</td>              <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Smelter</td>              <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Juice press</td>          <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Ice cream maker</td>      <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Jam maker</td>            <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Jeweler</td>              <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Honey extractor</td>      <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Coffee kiosk</td>         <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Soup kitchen</td>         <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Candle maker</td>         <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Flower shop</td>          <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Candy machine</td>        <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Sauce maker</td>          <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Sushi bar</td>            <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Salad bar</td>            <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Sandwich bar</td>         <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Smoothie mixer</td>       <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Pasta maker</td>          <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Essential oils lab</td>   <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Wok kitchen</td>          <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Hat maker</td>            <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Pasta kitchen</td>        <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Hot dog stand</td>        <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Donut maker</td>          <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Taco kitchen</td>         <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Omelet Station</td>       <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Tea stand</td>            <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Fondue pot</td>           <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Bath kiosk</td>           <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Deep fryer</td>           <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Preservation station</td> <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Pottery Studio</td>       <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Fudge shop</td>           <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Yogurt maker</td>         <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Stew pot</td>             <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Cupcake maker</td>        <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Perfumerie</td>           <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Waffle Maker</td>         <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Porridge Bar</td>         <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
+            <tr><td class="name-cell">Milkshake Bar</td>        <td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td><td class="center"><input type="checkbox" class="chk"></td></tr>
           </tbody>
+
           <tfoot>
             <tr>
               <td class="align-right"><strong>Section Progress</strong></td>
@@ -66,93 +119,70 @@
     <small>Saved to your browser automatically • v0.1</small>
   </footer>
 
-  <template id="row-template">
-    <tr>
-      <td><input type="text" class="input text" placeholder="Building name" /></td>
-      <td><input type="text" class="input frac" placeholder="e.g. 1 or 3/6" /></td>
-      <td><input type="text" class="input frac" placeholder="e.g. 1 or 4/6" /></td>
-      <td><input type="text" class="input frac" placeholder="e.g. 1 or 6/6" /></td>
-      <td class="actions-cell">
-        <button class="icon-btn remove" title="Delete">✕</button>
-      </td>
-    </tr>
-  </template>
-
+  <!-- JS mínimo: sin construir filas; solo carga/guarda y progreso -->
+  <script src="assets/app.js?v=static"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const tbody = document.getElementById("prod-body");
-      const t = document.getElementById("row-template");
       const sectionBar = document.getElementById("section-bar");
       const sectionLabel = document.getElementById("section-label");
 
-      function addRow(data) {
-        const node = t.content.cloneNode(true);
-        const tr = node.querySelector("tr");
-        const [name, l1, l2, l3] = tr.querySelectorAll("input");
-        if (data) {
-          name.value = data.name || "";
-          l1.value = data.l1 ?? "";
-          l2.value = data.l2 ?? "";
-          l3.value = data.l3 ?? "";
-        }
-        tr.querySelector(".remove").addEventListener("click", () => {
-          tr.remove();
-          save();
-          renderProgress();
-        });
-        [name, l1, l2, l3].forEach(inp => {
-          inp.addEventListener("input", () => {
-            save();
-            renderProgress();
-          });
-        });
-        tbody.appendChild(node);
-      }
-
-      function collectRows() {
+      function collectRowsFromDOM() {
         const rows = [];
         tbody.querySelectorAll("tr").forEach(tr => {
-          const [name, l1, l2, l3] = tr.querySelectorAll("input");
-          rows.push({ name: name.value.trim(), l1: l1.value.trim(), l2: l2.value.trim(), l3: l3.value.trim() });
+          const name = tr.querySelector(".name-cell")?.textContent?.trim() ?? "";
+          const checks = tr.querySelectorAll("input.chk");
+          rows.push({
+            name,
+            levels: Array.from(checks, cb => cb.checked ? 1 : 0),
+          });
         });
         return rows;
       }
 
+      function applyRowsToDOM(rows) {
+        const trs = tbody.querySelectorAll("tr");
+        trs.forEach((tr, i) => {
+          const checks = tr.querySelectorAll("input.chk");
+          const levels = rows?.[i]?.levels || [];
+          checks.forEach((cb, j) => cb.checked = !!levels[j]);
+        });
+      }
+
       function save() {
         const state = HD.loadAll();
-        state.production = { rows: collectRows(), updatedAt: new Date().toISOString() };
+        state.production = { rows: collectRowsFromDOM(), updatedAt: new Date().toISOString() };
         HD.saveAll(state);
       }
 
       function renderProgress() {
-        const rows = collectRows();
-        const pct = HD.calcSectionProgress(rows);
+        const rows = collectRowsFromDOM();
+        // Cálculo inline: promedio de (checks marcados / checks totales) por fila
+        const vals = rows.map(r => {
+          const total = r.levels.length || 0;
+          if (!total) return null;
+          const sum = r.levels.reduce((a,b) => a + (b ? 1 : 0), 0);
+          return sum / total;
+        }).filter(v => v !== null);
+        const pct = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : 0;
+
         sectionLabel.textContent = HD.formatPct(pct);
         sectionBar.style.width = (pct*100).toFixed(2) + "%";
       }
 
-      document.getElementById("add-row").addEventListener("click", () => addRow());
-      document.getElementById("reset").addEventListener("click", () => {
-        tbody.innerHTML = "";
-        HD.sampleProduction().forEach(addRow);
-        save();
-        renderProgress();
-      });
-      document.getElementById("export").addEventListener("click", () => {
-        const data = { production: { rows: collectRows() } };
-        const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "hayday-production.json";
-        a.click();
-        URL.revokeObjectURL(url);
+      // Eventos
+      tbody.addEventListener("change", (e) => {
+        if (e.target.matches("input.chk")) {
+          save();
+          renderProgress();
+        }
       });
 
-      // INIT
-      const state = HD.loadAll();
-      const rows = state.production?.rows?.length ? state.production.rows : HD.sampleProduction();
-      rows.forEach(addRow);
+      // INIT: cargar desde storage si existe
+      const saved = HD.loadAll()?.production?.rows;
+      if (Array.isArray(saved) && saved.length) {
+        applyRowsToDOM(saved);
+      }
       renderProgress();
     });
   </script>
